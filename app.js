@@ -1,18 +1,33 @@
-var express     = require("express"),
-    app         = express(),
-    bodyParser  = require('body-parser'),
-    request     = require("request"),
-    mongoose    = require("mongoose"),
-    Campground  = require("./models/campground.js"),
-    Comment     = require("./models/comment.js"),
-    seedDB      = require("./seeds.js");
+var express               = require("express"),
+    app                   = express(),
+    bodyParser            = require('body-parser'),
+    request               = require("request"),
+    mongoose              = require("mongoose"),
+    Campground            = require("./models/campground.js"),
+    Comment               = require("./models/comment.js"),
+    User                  = require("./models/user.js"),
+    seedDB                = require("./seeds.js"),
+    passport              = require("passport");
+    LocalStrategy         = require("passport-local"),
+    passportLocalMongoose = require("passport-local-mongoose");
 
+seedDB();
 mongoose.connect("mongodb://localhost/camp_spot");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
-seedDB();
+app.use(require("express-session")({
+  secret: "Chuy is awesome",
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 /*Campground.create({
     name: "Cool",
@@ -30,6 +45,12 @@ seedDB();
 //////Routes
 app.get("/", function(req, res){
     res.render("landing");
+});
+app.get("/register", function(req, res){
+  res.render("register");
+});
+app.get("/login", function(req, res){
+  res.render("login");
 });
 app.get("/campgrounds", function(req, res){
     Campground.find({}, function(err, allCampgrounds){
@@ -57,6 +78,9 @@ app.post("/campgrounds", function(req, res){
         }
     });
 });
+//Authentication
+
+
 app.get("/campgrounds/:id", function(req, res){
     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err){
