@@ -1,9 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Oswald|Roboto|Ubuntu');
+body{
+  background-color: #EEFFFF;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.header-title{
+  font-family: 'Baloo Bhaijaan', cursive;
+}
+.campgrounds{
+  font-family: 'Baloo Bhaijaan', cursive;
+}
+.most{
+  padding-bottom: 30px;
+}
+
 .form-style {
     width: 50%;
     margin: 0 auto;
-}
-body{
-  background-color: #EEFFFF;
 }
 .thumbnail img {
   width: 100%;
