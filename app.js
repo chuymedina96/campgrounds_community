@@ -55,22 +55,29 @@ app.get("/register", function(req, res){
 app.get("/login", function(req, res){
   res.render("login");
 });
+
+/////////////
+//Auth logic
+/////////////
+//isLoggedin function (checks to see if user is logged in before accessing certain pages)
 function isLoggedin(req, res, next){
   if(req.isAuthenticated()){
     return next();
   }
   res.redirect("/login");
 };
-//Auth logic
+//logout route using isLoggedin function
 app.get("/logout",function(req, res){
   req.logout();
   res.redirect("/");
 });
+//post router for login. routes user to secret page if logged in
 app.post("/login", passport.authenticate("local", {
   successRedirect: "/secret",
   failureRedirect: "/login"
 }) ,function(req, res){
 });
+//POST route for new registered user. Once user register, routes user to secret page
 app.post("/register", function(req, res){
   req.body.username
   req.body.password
@@ -85,7 +92,7 @@ app.post("/register", function(req, res){
   });
 });
 // end of auth logic
-//campground routes
+//Finds all campgrounds and diplays them in campgrounds route
 app.get("/campgrounds", function(req, res){
     Campground.find({}, function(err, allCampgrounds){
         if(err){
@@ -96,9 +103,11 @@ app.get("/campgrounds", function(req, res){
         }
     });
 });
+//route for creating new posts
 app.get("/campgrounds/new", function(req,res){
     res.render("campgrounds/new");
 });
+//post route for new campgrounds form
 app.post("/campgrounds", function(req, res){
     var name = req.body.name;
     var image = req.body.image;
@@ -112,7 +121,10 @@ app.post("/campgrounds", function(req, res){
         }
     });
 });
+//ROUTE for displaying the show page for individual posts/campgrounds
+//Using Mongodb posts id: "Campgrounds.findByID".
 app.get("/campgrounds/:id", function(req, res){
+    // POPULATES THE COMMENTS PART OF THE CAMPGROUND SCHEMA WITH 
     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err){
             console.log(err);
@@ -121,6 +133,7 @@ app.get("/campgrounds/:id", function(req, res){
         }
     });
 });
+//GET Route for creating a new comment for individual post/campgrounds
 app.get("/campgrounds/:id/comments/new", function(req,res){
     Campground.findById(req.params.id, function(err, campground){
         if(err){
@@ -130,6 +143,7 @@ app.get("/campgrounds/:id/comments/new", function(req,res){
         }
     });
 });
+//POST route for posting comment to show page for individual posts
 app.post("/campgrounds/:id/comments", function(req,res){
     Campground.findById(req.params.id, function(err, campground){
         if(err){
@@ -150,16 +164,15 @@ app.post("/campgrounds/:id/comments", function(req,res){
             });
         }
     });
-
-    //redirect
 });
-//end of campgrounds routes
+// ROUTE FOR 404 PAGE
 app.get("*", function(req, res){
     var image={
         pic: "https://i.imgflip.com/663zn.jpg"
     };
     res.render("404", {image:image});
 });
+//SERVER CONFIG
 app.listen(3000, function(){
     console.log("Your server has started yoo!");
 });
