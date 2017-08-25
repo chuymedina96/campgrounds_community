@@ -46,12 +46,46 @@ passport.deserializeUser(User.deserializeUser());
 app.get("/", function(req, res){
     res.render("landing");
 });
+app.get("/secret",isLoggedin, function(req, res){
+  res.render("secret");
+});
 app.get("/register", function(req, res){
   res.render("register");
 });
 app.get("/login", function(req, res){
   res.render("login");
 });
+function isLoggedin(req, res, next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  res.redirect("/login");
+};
+//Auth logic
+app.get("/logout",function(req, res){
+  req.logout();
+  res.redirect("/");
+});
+app.post("/login", passport.authenticate("local", {
+  successRedirect: "/secret",
+  failureRedirect: "/login"
+}) ,function(req, res){
+});
+app.post("/register", function(req, res){
+  req.body.username
+  req.body.password
+  User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+    if(err){
+      console.log(err);
+      return res.render("register");
+    }
+      passport.authenticate("local")(req, res, function(){
+        res.redirect("/secret");
+      });
+  });
+});
+// end of auth logic
+//campground routes
 app.get("/campgrounds", function(req, res){
     Campground.find({}, function(err, allCampgrounds){
         if(err){
@@ -78,9 +112,6 @@ app.post("/campgrounds", function(req, res){
         }
     });
 });
-//Authentication
-
-
 app.get("/campgrounds/:id", function(req, res){
     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err){
@@ -121,7 +152,8 @@ app.post("/campgrounds/:id/comments", function(req,res){
     });
 
     //redirect
-})
+});
+//end of campgrounds routes
 app.get("*", function(req, res){
     var image={
         pic: "https://i.imgflip.com/663zn.jpg"
