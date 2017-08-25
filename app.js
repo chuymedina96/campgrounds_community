@@ -84,7 +84,7 @@ app.get("/logout", function(req, res){
   req.logout();
   res.redirect("/");
 });
-app.get("/campgrounds", isLoggedin, function(req, res){
+app.get("/campgrounds", function(req, res){
     Campground.find({}, function(err, allCampgrounds){
         if(err){
             console.log("There has been an error!");
@@ -95,7 +95,7 @@ app.get("/campgrounds", isLoggedin, function(req, res){
     });
 });
 //route for creating new posts
-app.get("/campgrounds/new", function(req,res){
+app.get("/campgrounds/new", isLoggedin, function(req,res){
     res.render("campgrounds/new");
 });
 //post route for new campgrounds form
@@ -125,7 +125,7 @@ app.get("/campgrounds/:id", function(req, res){
     });
 });
 //GET Route for creating a new comment for individual post/campgrounds
-app.get("/campgrounds/:id/comments/new", function(req,res){
+app.get("/campgrounds/:id/comments/new",isLoggedin,function(req,res){
     Campground.findById(req.params.id, function(err, campground){
         if(err){
             console.log(err);
