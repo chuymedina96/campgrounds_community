@@ -12,7 +12,7 @@ var express               = require("express"),
     passportLocalMongoose = require("passport-local-mongoose");
 
 seedDB();
-mongoose.connect("mongodb://localhost/camp_spot");
+mongoose.connect("mongodb://localhost/camp_spot", {useMongoClient: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
