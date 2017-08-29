@@ -1,4 +1,5 @@
-html,body{
+html,
+body{
     background: linear-gradient(rgba(0, 0, 0, .7), transparent 100%), linear-gradient(0deg, #43BDBD, transparent), url("https://ssl.c.photoshelter.com/img-get/I0000AXrDzDwCM04/s/900/900/campingUnderTheStars.jpg");
     background-repeat: no-repeat;
     background-position: center center;
