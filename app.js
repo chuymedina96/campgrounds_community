@@ -48,11 +48,10 @@ function isLoggedin(req, res, next){
 };
 //View engine
 app.set("view engine", "ejs");
-// 404 PAGE
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundsRoutes);
 app.use(commentsRoutes);
-
+// 404 PAGE
 app.get("*", function(req, res){
     var image={
         pic: "https://i.imgflip.com/663zn.jpg"
