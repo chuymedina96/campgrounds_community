@@ -54,5 +54,34 @@ router.get("/:id", function(req, res){
         }
     });
 });
+router.get("/:id/edit", function(req, res){
+  Campground.findById(req.params.id, function(err, foundCampground){
+    if(err){
+      console.log(err);
+      res.redirect("/campgrounds");
+    }else{
+      res.render("campgrounds/edit", {campground: foundCampground});
+    }
+  });
+});
+router.put("/:id", isLoggedin, function(req, res){
+  Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedPost){
+    if(err){
+      console.log(err);
+      res.redirect("/campgrounds");
+    }else{
+      res.redirect("/campgrounds/" + req.params.id);
+    }
+  })
+});
+router.delete("/:id", isLoggedin, function(req, res){
+  Campground.findByIdAndRemove(req.params.id, function(err){
+    if(err){
+      res.redirect("/campgrounds");
+    }else{
+      res.redirect("/campgrounds");
+    }
+  });
+});
 
 module.exports = router;

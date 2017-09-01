@@ -1,12 +1,13 @@
 //Modules
 var express               = require("express"),
-    app                   = express(),
     bodyParser            = require('body-parser'),
-    request               = require("request"),
     mongoose              = require("mongoose"),
     passport              = require("passport"),
+    methodOverride        = require("method-override"),
     LocalStrategy         = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose");
+//Using express
+var app                   = express();
 //Models
 var Campground            = require("./models/campground.js"),
     Comment               = require("./models/comment.js"),
@@ -21,8 +22,8 @@ seedDB(); //function seeds database and adds starter data.
 
 //Connecting MongoDB
 mongoose.connect("mongodb://localhost/camp_spot", {useMongoClient: true});
-//Main Routes
-
+//Public Dir and bodyParser
+app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(require("express-session")({
@@ -48,6 +49,7 @@ function isLoggedin(req, res, next){
 };
 //View engine
 app.set("view engine", "ejs");
+//Using routes
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundsRoutes);
 app.use(commentsRoutes);
