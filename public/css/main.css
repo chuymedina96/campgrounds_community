@@ -3,7 +3,6 @@ body{
   background-color: #EEFFFF;
   font-family: 'Ubuntu', sans-serif;
 }
-
 .header-title{
   font-family: 'Baloo Bhaijaan', cursive;
 }
@@ -13,7 +12,6 @@ body{
 .most{
   padding-bottom: 30px;
 }
-
 .form-style {
     width: 50%;
     margin: 0 auto;
