@@ -9,12 +9,10 @@ body{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    padding-bottom: 180px;
     text-align: center;
     height: 100%;
     margin: 0;
     padding: 0;
-    width: 100%;
 }
 h1{
     font-size: 100px;

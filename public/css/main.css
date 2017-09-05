@@ -34,3 +34,6 @@ body{
   width: 25px;
   display: inline;
 }
+a:hover {
+  color: yellow;
+}

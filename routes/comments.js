@@ -20,6 +20,9 @@ router.get("/campgrounds/:id/comments/new",isLoggedin,function(req,res){
         }
     });
 });
+router.get("/campgrounds/:id/comments/:comment_id/edit", isLoggedin, function(req, res){
+  res.render("comments/edit");
+});
 //POST route for posting comment to show page for individual posts
 router.post("/campgrounds/:id/comments", isLoggedin, function(req,res){
     Campground.findById(req.params.id, function(err, campground){

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../../css/animate.min.css"/>
+    <link rel="stylesheet" href="../css/animate.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -13,23 +13,21 @@
 
 </head>
 <body>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse bg-primary">
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/campgrounds">Browse Food</a>
       </div>
-      <ul class="nav navbar-nav">
-        <li><a href="/campgrounds">Campgrounds</a></li>
-      </ul>
       <% if(!currentUser){ %>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a class="navbar-brand" href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a class="navbar-brand" href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
       <% } else { %>
       <ul class="nav navbar-nav">
         <li><a href="/campgrounds/new"><span class="glyphicon glyphicon-comment">Messages</span></a></li>
-        <li><a href="/campgrounds/new">Add New</a></li>
+        <li><a href="/campgrounds/new">Add New Food</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><img id="profile-img" class="img-responsive" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAw1AAAAJGMwNWMzNzliLTM0Y2MtNGI1MS1hMGZjLTg5ZmQ1MzM1ZmZjNw.jpg"/>  <%= currentUser.firstName %></a></li>
