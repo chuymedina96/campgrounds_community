@@ -21,7 +21,14 @@ router.get("/campgrounds/:id/comments/new",isLoggedin,function(req,res){
     });
 });
 router.get("/campgrounds/:id/comments/:comment_id/edit", isLoggedin, function(req, res){
-  res.render("comments/edit");
+  Comment.findById(req.params.comment_id, function(err, foundComment){
+    if(err){
+      console.log(err);
+      res.redirect("back")
+    }else{
+      res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
+    }
+  })
 });
 //POST route for posting comment to show page for individual posts
 router.post("/campgrounds/:id/comments", isLoggedin, function(req,res){
@@ -49,6 +56,16 @@ router.post("/campgrounds/:id/comments", isLoggedin, function(req,res){
             });
         }
     });
+});
+router.put("/campgrounds/:id/comments/:comment_id", function(req, res){
+  Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
+    if(err){
+      console.log(err);
+      res.redirect("back");
+    }else{
+      res.redirect("/campgrounds/" + req.params.id);
+    }
+  })
 });
 
 module.exports = router;

@@ -4,7 +4,7 @@
     <div class="animated slideInRight row">
         <h1 class="text-center">Edit Comment</h1>
         <div class="form-style">
-        <form action="/campgrounds/<%= campground._id %>/comments/<%=comment._id%>?_method=PUT" method="POST">
+        <form action="/campgrounds/<%= campground_id %>/comments/<%= comment %>?_method=PUT" method="POST">
             <div class="form-group">
                 <input class="form-control" type="text" name ="comment[text]" value="<%= comment.text %>"></input>
             </div>
