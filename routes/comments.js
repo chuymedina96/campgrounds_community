@@ -24,11 +24,11 @@ router.get("/campgrounds/:id/comments/:comment_id/edit", isLoggedin, function(re
   Comment.findById(req.params.comment_id, function(err, foundComment){
     if(err){
       console.log(err);
-      res.redirect("back")
+      res.redirect("back");
     }else{
       res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
     }
-  })
+  });
 });
 //POST route for posting comment to show page for individual posts
 router.post("/campgrounds/:id/comments", isLoggedin, function(req,res){
