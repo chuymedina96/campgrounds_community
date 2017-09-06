@@ -62,7 +62,7 @@ app.get("*", function(req, res){
 });
 //SERVER
 app.listen(3000, function(){
-    console.log("Your server has started yoo!");
+    console.log("Your server has started!!!");
 });
 //Playing around with Yahoo`s weather api
 /*app.get("/yahoo", function(req, res){

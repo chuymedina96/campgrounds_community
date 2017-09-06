@@ -13,24 +13,24 @@
 
 </head>
 <body>
-  <nav class="navbar navbar-inverse bg-primary">
+  <nav class="navbar navbar-inverse bg-primary" style="display: fixed;">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="/">Home</a>
-        <a class="navbar-brand" href="/campgrounds">Browse Food</a>
+        <a class="navbar-brand logo" href="/">Home</a>
       </div>
       <% if(!currentUser){ %>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a class="navbar-brand" href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a class="navbar-brand" href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <ul class="nav navbar-nav navbar-right register-link">
+        <li><a href="/register"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
       </ul>
       <% } else { %>
       <ul class="nav navbar-nav">
-        <li><a href="/campgrounds/new"><span class="glyphicon glyphicon-comment">Messages</span></a></li>
+        <li><a href="/campgrounds">Browse Food</a></li>
+        <li><a href="/campgrounds/new">Messages</a></li>
         <li><a href="/campgrounds/new">Add New Food</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><img id="profile-img" class="img-responsive" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAw1AAAAJGMwNWMzNzliLTM0Y2MtNGI1MS1hMGZjLTg5ZmQ1MzM1ZmZjNw.jpg"/>  <%= currentUser.firstName %></a></li>
+        <li><a href="#"><img id="profile-img" class="img-responsive" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAw1AAAAJGMwNWMzNzliLTM0Y2MtNGI1MS1hMGZjLTg5ZmQ1MzM1ZmZjNw.jpg"/><%= currentUser.firstName %></a></li>
         <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
       </ul>
     </div>
