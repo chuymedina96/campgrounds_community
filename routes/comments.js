@@ -47,7 +47,7 @@ router.post("/campgrounds/:id/comments", isLoggedin, function(req,res){
         }
     });
 });
-router.get("/campgrounds/:id/comments/:comment_id/edit", checkCampgroundOwnership, function(req, res){
+router.get("/campgrounds/:id/comments/:comment_id/edit",checkCommentOwnership,function(req, res){
   Comment.findById(req.params.comment_id, function(err, foundComment){
     if(err){
       console.log(err);
@@ -57,7 +57,7 @@ router.get("/campgrounds/:id/comments/:comment_id/edit", checkCampgroundOwnershi
     }
   });
 });
-router.put("/campgrounds/:id/comments/:comment_id", checkCampgroundOwnership, function(req, res){
+router.put("/campgrounds/:id/comments/:comment_id",checkCommentOwnership,function(req, res){
   Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
     if(err){
       console.log(err);
@@ -67,7 +67,7 @@ router.put("/campgrounds/:id/comments/:comment_id", checkCampgroundOwnership, fu
     }
   });
 });
-router.delete("/campgrounds/:id/comments/:comment_id",checkCampgroundOwnership,function(req, res){
+router.delete("/campgrounds/:id/comments/:comment_id",checkCommentOwnership,function(req, res){
   Comment.findByIdAndRemove(req.params.comment_id, function(err){
     if(err){
       res.redirect("back");
@@ -76,9 +76,9 @@ router.delete("/campgrounds/:id/comments/:comment_id",checkCampgroundOwnership,f
     }
   });
 });
-function checkCampgroundOwnership(req, res, next) {
+function checkCommentOwnership(req, res, next) {
   if(req.isAuthenticated()){
-    Comment.findById(req.params.id, function(err, foundComment){
+    Comment.findById(req.params.comment_id, function(err, foundComment){
       if(err){
         console.log(err);
         res.redirect("back");
