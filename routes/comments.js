@@ -20,16 +20,6 @@ router.get("/campgrounds/:id/comments/new",isLoggedin,function(req,res){
         }
     });
 });
-router.get("/campgrounds/:id/comments/:comment_id/edit", isLoggedin, function(req, res){
-  Comment.findById(req.params.comment_id, function(err, foundComment){
-    if(err){
-      console.log(err);
-      res.redirect("back");
-    }else{
-      res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
-    }
-  });
-});
 //POST route for posting comment to show page for individual posts
 router.post("/campgrounds/:id/comments", isLoggedin, function(req,res){
     Campground.findById(req.params.id, function(err, campground){
@@ -57,15 +47,52 @@ router.post("/campgrounds/:id/comments", isLoggedin, function(req,res){
         }
     });
 });
-router.put("/campgrounds/:id/comments/:comment_id", function(req, res){
-  Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
+router.get("/campgrounds/:id/comments/:comment_id/edit", checkCampgroundOwnership, function(req, res){
+  Comment.findById(req.params.comment_id, function(err, foundComment){
     if(err){
       console.log(err);
       res.redirect("back");
     }else{
+      res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
+    }
+  });
+});
+router.put("/campgrounds/:id/comments/:comment_id", checkCampgroundOwnership, function(req, res){
+  Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
+    if(err){
+      console.log(err);
+      res.redirect("back");
+    } else{
       res.redirect("/campgrounds/" + req.params.id);
     }
-  })
+  });
 });
+router.delete("/campgrounds/:id/comments/:comment_id",checkCampgroundOwnership,function(req, res){
+  Comment.findByIdAndRemove(req.params.comment_id, function(err){
+    if(err){
+      res.redirect("back");
+    }else{
+      res.redirect("/campgrounds/" + req.params.id);
+    }
+  });
+});
+function checkCampgroundOwnership(req, res, next) {
+  if(req.isAuthenticated()){
+    Comment.findById(req.params.id, function(err, foundComment){
+      if(err){
+        console.log(err);
+        res.redirect("back");
+      }else{
+        if(foundComment.author.id.equals(req.user._id)){
+            next();
+        }else{
+          res.redirect("back");
+        }
+      }
+    });
+  }else{
+    res.redirect("back");
+  }
+};
 
 module.exports = router;
