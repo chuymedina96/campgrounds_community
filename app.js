@@ -52,7 +52,7 @@ app.set("view engine", "ejs");
 //Using routes
 app.use("/", indexRoutes);
 app.use("/campgrounds", campgroundsRoutes);
-app.use(commentsRoutes);
+app.use("/campgrounds/:id/comments", commentsRoutes);
 // 404 PAGE
 app.get("*", function(req, res){
     var image={
