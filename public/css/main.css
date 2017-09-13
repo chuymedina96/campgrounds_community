@@ -34,9 +34,6 @@ body{
   width: 25px;
   display: inline;
 }
-a:hover {
-  color: yellow;
-}
 .register-links li{
   font-size: 30px;
 }
