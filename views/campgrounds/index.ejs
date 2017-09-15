@@ -14,14 +14,13 @@
         <% campgrounds.forEach(function(campground){ %>
             <div class="col-md-4 col-sm-6">
                 <div class="thumbnail text-center">
-                    <img src="<%= campground.image %>"></img>
+                    <a href="/campgrounds/<%= campground._id %>"><img src="<%= campground.image %>"></img>
                     <div class="caption">
-                        <h4><%= campground.name %></h4>
+                        <h4 class="header-title"><%= campground.name %></h4>
                     </div>
-                    <p>
-                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More info!</a>
-                    </p>
+
                 </div>
+                </a>
             </div>
         <% }); %>
     </div>
@@ -34,25 +33,26 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h3 class="text-center header-title">Add Food</h3>
         </div>
         <div class="modal-body">
               <div class="row">
-                  <h1 class="text-center">Create new campground!</h1>
-                  <div class="form-style">
+                  <div class="form-style text-center">
                     <form action="/campgrounds" method="POST">
                         <div class="form-group">
-                            <input class="form-control" type="text" name ="name" placeholder="new campground"></input>
+                            <input class="form-control" type="text" name ="name" placeholder="Title"></input>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="image" placeholder="image URL"></input>
+                            <input class="form-control" type="text" name="image" placeholder="Image URL"></input>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="description" placeholder="Describe it"></input>
+                            <input class="form-control" type="text" name="description" placeholder="Description"></input>
                         </div>
-                        <button class="btn btn-lg btn-primary btn-block">Submit</button>
-                        <a data-dismiss="modal">Back to campgrounds</a>
                     </form>
+                  </div>
+                  <div class="col-md-12 text-center">
+                    <button class="btn btn-lg btn-primary">Submit</button><br/><br/>
+                    <a href="#" data-dismiss="modal">Back to campgrounds</a>
                   </div>
               </div>
         </div>

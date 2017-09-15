@@ -1,16 +1,16 @@
 <% include ../partials/header %>
-<div class="container animated fadeIn">
+<div class="container animated fadeInDown">
     <div class="row">
         <div class="col-md-3">
             <p class="lead">Yelpcamp</p>
-            <div class="list-group animated fadeInLeftBig">
+            <div class="list-group">
                 <li class="list-group-item active">Info one</li>
                 <li class="list-group-item">Info two</li>
                 <li class="list-group-item">Info three</li>
                 <li class="list-group-item">Info three</li>
             </div>
         </div>
-        <div class="col-md-9 animated fadeInRightBig">
+        <div class="col-md-9">
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= campground.image %>"/>
                 <div class="caption-full">
@@ -28,8 +28,7 @@
             </div>
             <div class="well">
               <div class="text-right">
-                <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Comment</a>
-                <button type="button" class="glyphicon glyphicon-comment btn btn-info btn-lg" data-toggle="modal" data-target="#commentModal">Comment</button>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#commentModal">Comment</button>
               </div>
               <hr>
               <% campground.comments.forEach(function(comment){ %>
@@ -65,20 +64,16 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h3 class="text-center header-title">Add a new comment!</h3>
         </div>
         <div class="modal-body">
           <div class="jumbotron">
           <div class="container">
-              <div class="animated slideInRight row">
-                  <h1 class="text-center">Add a new comment!</h1>
+              <div class="row">
                   <div class="form-style">
                   <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
                       <div class="form-group">
                           <input class="form-control" type="text" name ="comment[text]" placeholder="Type your comment"></input>
-                      </div>
-                      <div class="form-group">
-                          <input class="form-control" type="text" name ="comment[author]" placeholder="Author"></input>
                       </div>
                       <button class="btn btn-lg btn-primary btn-block">Submit</button>
                       <a href="/campgrounds">Back to campgrounds</a>
