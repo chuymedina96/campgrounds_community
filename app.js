@@ -41,12 +41,6 @@ app.use(function(req, res, next){
   res.locals.currentUser = req.user;
   next();
 });
-function isLoggedin(req, res, next){
-  if(req.isAuthenticated()){
-    return next();
-  }
-  res.redirect("/login");
-};
 //View engine
 app.set("view engine", "ejs");
 //Using routes
