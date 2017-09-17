@@ -5,7 +5,8 @@ var express               = require("express"),
     passport              = require("passport"),
     methodOverride        = require("method-override"),
     LocalStrategy         = require("passport-local"),
-    passportLocalMongoose = require("passport-local-mongoose");
+    passportLocalMongoose = require("passport-local-mongoose"),
+    flash                 = require("connect-flash");
 //Using express
 var app                   = express();
 //Models
@@ -24,6 +25,7 @@ seedDB(); //function seeds database and adds starter data.
 mongoose.connect("mongodb://localhost/camp_spot", {useMongoClient: true});
 //Public Dir and bodyParser
 app.use(methodOverride("_method"));
+app.use(flash());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(require("express-session")({
@@ -39,6 +41,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function(req, res, next){
   res.locals.currentUser = req.user;
+  res.locals.error       = req.flash("error");
+  res.locals.success     = req.flash("success");
   next();
 });
 //View engine

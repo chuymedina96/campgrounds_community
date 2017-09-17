@@ -1,7 +1,7 @@
 var express     = require("express"),
     router      = express.Router(),
     Campground  = require("../models/campground.js"),
-    Comment  = require("../models/comment.js"),
+    Comment     = require("../models/comment.js"),
     middleware  = require("../middleware");
 
 router.get("/", function(req, res){

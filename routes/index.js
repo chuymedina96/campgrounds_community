@@ -35,7 +35,8 @@ router.post("/login", passport.authenticate("local",
 });
 router.get("/logout", function(req, res){
   req.logout();
-  res.redirect("/");
+  req.flash("success", "Successfully logged Out! :)");
+  res.redirect("/campgrounds");
 });
 
 function isLoggedin(req, res, next){
