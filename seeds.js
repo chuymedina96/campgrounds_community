@@ -1,5 +1,5 @@
 var mongoose        = require("mongoose"),
-    Campground      = require("./models/campground.js"),
+    Food      = require("./models/foods.js"),
     Comment         = require("./models/comment.js");
 
 

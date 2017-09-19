@@ -10,11 +10,11 @@ var express               = require("express"),
 //Using express
 var app                   = express();
 //Models
-var Campground            = require("./models/campground.js"),
+var Food                  = require("./models/foods.js"),
     Comment               = require("./models/comment.js"),
     User                  = require("./models/user.js");
 //Routes
-var campgroundsRoutes     = require("./routes/campgrounds.js"),
+var foodRoutes            = require("./routes/foods.js"),
     commentsRoutes        = require("./routes/comments.js"),
     indexRoutes           = require("./routes/index.js");
 //Seeding the database
@@ -22,7 +22,7 @@ var seedDB                = require("./seeds.js");
 seedDB(); //function seeds database and adds starter data.
 
 //Connecting MongoDB
-mongoose.connect("mongodb://localhost/camp_spot", {useMongoClient: true});
+mongoose.connect("mongodb://localhost/food_spot", {useMongoClient: true});
 //Public Dir and bodyParser
 app.use(methodOverride("_method"));
 app.use(flash());
@@ -40,6 +40,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function(req, res, next){
+
   res.locals.currentUser = req.user;
   res.locals.error       = req.flash("error");
   res.locals.success     = req.flash("success");
@@ -49,8 +50,8 @@ app.use(function(req, res, next){
 app.set("view engine", "ejs");
 //Using routes
 app.use("/", indexRoutes);
-app.use("/campgrounds", campgroundsRoutes);
-app.use("/campgrounds/:id/comments", commentsRoutes);
+app.use("/foods", foodRoutes);
+app.use("/foods/:id/comments", commentsRoutes);
 // 404 PAGE
 app.get("*", function(req, res){
     var image={

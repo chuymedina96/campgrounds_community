@@ -1,15 +1,15 @@
-var Campground    = require("../models/campground.js"),
+var Food          = require("../models/foods.js"),
     Comment       = require("../models/comment.js"),
     middlewareObj = {};
 
-middlewareObj.checkCampgroundOwnership = function(req, res, next){
+middlewareObj.checkFoodOwnership = function(req, res, next){
     if(req.isAuthenticated()){
-      Campground.findById(req.params.id, function(err, foundCampground){
+      Food.findById(req.params.id, function(err, foundFoods){
         if(err){
           console.log(err);
           res.redirect("back");
         }else{
-          if(foundCampground.author.id.equals(req.user._id)){
+          if(foundFoods.author.id.equals(req.user._id)){
               next();
           }else{
             req.flash("error", "You don`t have permission to do that!")

@@ -15,12 +15,12 @@
                 <img class="img-responsive" src="<%= campground.image %>"/>
                 <div class="caption-full">
                     <h4 class="pull-right">$9.00/night</h4>
-                    <h4><a><%= campground.name %></a></h4>
-                    <h3><%= campground.description %></h3>
-                    <p>Submitted by <%= campground.author.username %></p>
-                    <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
-                      <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit Post</a>
-                      <form id = "delete-form" class="" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
+                    <h4><a><%= food.name %></a></h4>
+                    <h3><%= food.description %></h3>
+                    <p>Submitted by <%= food.author.username %></p>
+                    <% if(currentUser && food.author.id.equals(currentUser._id)){ %>
+                      <a class="btn btn-warning" href="/foods/<%= food._id %>/edit">Edit Post</a>
+                      <form id = "delete-form" class="" action="/foods/<%= food._id %>?_method=DELETE" method="post">
                         <button class="btn btn-danger">Delete</button>
                       </form>
                     <% } %>

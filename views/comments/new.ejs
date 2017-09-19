@@ -4,12 +4,12 @@
     <div class="animated slideInRight row">
         <h1 class="text-center">Add a new comment!</h1>
         <div class="form-style">
-        <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
+        <form action="/foods/<%= food._id %>/comments" method="POST">
             <div class="form-group">
                 <input class="form-control" type="text" name ="comment[text]" placeholder="Type your comment"></input>
             </div>
             <button class="btn btn-lg btn-primary btn-block">Submit</button>
-            <a href="/campgrounds">Back to campgrounds</a>
+            <a href="/foods">Back to campgrounds</a>
         </form>
         </div>
     </div>

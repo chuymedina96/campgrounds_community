@@ -1,27 +1,27 @@
 var express     = require("express"),
     router      = express.Router({mergeParams: true}),
-    Campground  = require("../models/campground.js"),
+    Food        = require("../models/foods.js"),
     Comment     = require("../models/comment.js"),
     middleware  = require("../middleware");
 
 //GET Route for creating a new comment for individual post/campgrounds
 router.get("/new",middleware.isLoggedin,function(req,res){
     console.log(req.params.id);
-    Campground.findById(req.params.id, function(err, campground){
+    Food.findById(req.params.id, function(err, food){
         if(err){
             console.log(err);
         }else{
-            res.render("comments/new", {campground: campground});
+            res.render("comments/new", {food: food});
         }
     });
 });
 //POST route for posting comment to show page for individual posts
 router.post("/",middleware.isLoggedin,function(req,res){
-    Campground.findById(req.params.id, function(err, campground){
+    Food.findById(req.params.id, function(err, food){
         if(err){
             req.flash("error", "Hmm, something went wrong...")
             console.log(err);
-            res.redirect("/campgrounds");
+            res.redirect("/foods");
         }else{
             console.log(req.body.comment);
             //creating a new comment
@@ -34,11 +34,11 @@ router.post("/",middleware.isLoggedin,function(req,res){
                     comment.author.username = req.user.username;
                     comment.save();
                     //connect new comment to campground
-                    campground.comments.push(comment);
-                    campground.save();
+                    food.comments.push(comment);
+                    food.save();
                     console.log(comment);
                     req.flash("success", "Successfully created comment!")
-                    res.redirect("/campgrounds/"+ campground._id);
+                    res.redirect("/foods/"+ food._id);
                 }
             });
         }

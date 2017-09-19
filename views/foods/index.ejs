@@ -11,12 +11,12 @@
         <% } %>
     </div>
     <div class="row animated fadeInUp" style="display: flex; flex-wrap: wrap">
-        <% campgrounds.forEach(function(campground){ %>
+        <% foods.forEach(function(food){ %>
             <div class="col-md-4 col-sm-6">
                 <div class="thumbnail text-center">
-                    <a href="/campgrounds/<%= campground._id %>"><img src="<%= campground.image %>"></img>
+                    <a href="/foods/<%= food._id %>"><img src="<%= food.image %>"></img>
                     <div class="caption">
-                        <h4 class="header-title"><%= campground.name %></h4>
+                        <h4 class="header-title"><%= food.name %></h4>
                     </div>
 
                 </div>
@@ -38,7 +38,7 @@
         <div class="modal-body">
               <div class="row">
                   <div class="form-style text-center">
-                    <form action="/campgrounds" method="POST">
+                    <form action="/foods" method="POST">
                         <div class="form-group">
                             <input class="form-control" type="text" name ="name" placeholder="Title"></input>
                         </div>
@@ -52,7 +52,7 @@
                   </div>
                   <div class="col-md-12 text-center">
                     <button class="btn btn-lg btn-primary">Submit</button><br/><br/>
-                    <a href="#" data-dismiss="modal">Back to campgrounds</a>
+                    <a href="#" data-dismiss="modal">Back to Browsing foods</a>
                   </div>
               </div>
         </div>
