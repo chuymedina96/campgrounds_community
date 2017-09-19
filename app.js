@@ -17,6 +17,7 @@ var Food                  = require("./models/foods.js"),
 var foodRoutes            = require("./routes/foods.js"),
     commentsRoutes        = require("./routes/comments.js"),
     indexRoutes           = require("./routes/index.js");
+    profileRoutes         = require("./routes/profile.js");
 //Seeding the database
 var seedDB                = require("./seeds.js");
 seedDB(); //function seeds database and adds starter data.
@@ -52,6 +53,7 @@ app.set("view engine", "ejs");
 app.use("/", indexRoutes);
 app.use("/foods", foodRoutes);
 app.use("/foods/:id/comments", commentsRoutes);
+app.use("/profiles", profileRoutes);
 // 404 PAGE
 app.get("*", function(req, res){
     var image={
