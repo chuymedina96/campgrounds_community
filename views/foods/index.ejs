@@ -10,9 +10,9 @@
         </div>
         <% } %>
     </div>
-    <div class="row animated fadeInUp" style="display: flex; flex-wrap: wrap">
+    <div class="row animated fadeInUpBig" style="display: flex; flex-wrap: wrap">
         <% foods.forEach(function(food){ %>
-            <div class="col-md-4 col-sm-6">
+            <div class="col-md-6 col-sm-2">
                 <div class="thumbnail text-center">
                     <a href="/foods/<%= food._id %>"><img src="<%= food.image %>"></img>
                     <div class="caption">
@@ -40,19 +40,17 @@
                   <div class="form-style text-center">
                     <form action="/foods" method="POST">
                         <div class="form-group">
-                            <input class="form-control" type="text" name ="name" placeholder="Title"></input>
+                            <input class="form-control" type="text" name ="name" placeholder="New Food"></input>
                         </div>
                         <div class="form-group">
                             <input class="form-control" type="text" name="image" placeholder="Image URL"></input>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="description" placeholder="Description"></input>
+                            <input class="form-control" type="text" name="description" placeholder="Describe it"></input>
                         </div>
+                        <button class="btn btn-lg btn-primary btn-block">Submit</button><br />
+                        <a href="/foods">Back to Browsing Foods</a>
                     </form>
-                  </div>
-                  <div class="col-md-12 text-center">
-                    <button class="btn btn-lg btn-primary">Submit</button><br/><br/>
-                    <a href="#" data-dismiss="modal">Back to Browsing foods</a>
                   </div>
               </div>
         </div>

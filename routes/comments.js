@@ -50,7 +50,7 @@ router.get("/:comment_id/edit",middleware.checkCommentOwnership,function(req, re
       console.log(err);
       res.redirect("back");
     }else{
-      res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
+      res.render("comments/edit", {food: req.params.id, comment: foundComment});
     }
   });
 });
@@ -60,7 +60,7 @@ router.put("/:comment_id",middleware.checkCommentOwnership,function(req, res){
       console.log(err);
       res.redirect("back");
     } else{
-      res.redirect("/campgrounds/" + req.params.id);
+      res.redirect("/foods/" + req.params.id);
     }
   });
 });
@@ -70,7 +70,7 @@ router.delete("/:comment_id",middleware.checkCommentOwnership,function(req, res)
       res.redirect("back");
     }else{
       req.flash("success", "Comment deleted! :)");
-      res.redirect("/campgrounds/" + req.params.id);
+      res.redirect("/foods/" + req.params.id);
     }
   });
 });

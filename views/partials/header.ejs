@@ -29,7 +29,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/campgrounds">Browse food</a></li>
+        <li><a href="/foods">Browse food</a></li>
       </ul>
       <% if(!currentUser){ %>
       <ul class="nav navbar-nav navbar-right">
@@ -53,9 +53,9 @@
 </nav>
 <div class="container">
   <% if(error && error.length > 0){ %>
-  <div class="text-center alert alert-danger" role="alert"><%= error %></div>
+  <div class="animated bounce text-center alert alert-danger" role="alert"><%= error %></div>
   <% } %>
   <% if(success && success.length > 0){ %>
-  <div class="text-center alert alert-success" role="alert"><%= success %></div>
+  <div class="animated flipInX text-center alert alert-success" role="alert"><%= success %></div>
   <% } %>
 </div>
