@@ -20,14 +20,15 @@ router.get("/new", middleware.isLoggedin, function(req,res){
 });
 //Post route for New Post form
 router.post("/", middleware.isLoggedin, function(req, res){
-    var name = req.body.name;
-    var image = req.body.image;
+    var name        = req.body.name;
+    var image       = req.body.image;
+    var price       = req.body.price;
     var description = req.body.description;
     var author = {
       id: req.user._id,
       username: req.user.username
     };
-    var newFood = {name: name, image: image, description: description, author: author};
+    var newFood = {name: name, price: price, image: image, description: description, author: author};
     Food.create(newFood, function(err, newlyCreated){
       console.log(req.user);
         if(err){
