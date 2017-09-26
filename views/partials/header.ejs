@@ -39,7 +39,7 @@
       <% } else { %>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img id="profile-img" class="img-responsive" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAw1AAAAJGMwNWMzNzliLTM0Y2MtNGI1MS1hMGZjLTg5ZmQ1MzM1ZmZjNw.jpg"/><%= currentUser.firstName %></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img id="profile-img" class="img-responsive" src="<%= currentUser.image %>"/><%= currentUser.firstName %></a>
             <ul class="dropdown-menu text-right">
               <li><a href="/profiles/profile">Profile</a></li>
               <li><a href="#">Edit Profile</a></li>

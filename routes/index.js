@@ -12,7 +12,7 @@ router.get("/register", function(req, res){
   res.render("register");
 });
 router.post("/register", function(req, res){
-  var newUser = new User({firstName: req.body.firstName, lastName: req.body.lastName, username: req.body.username});
+  var newUser = new User({firstName: req.body.firstName, lastName: req.body.lastName, image: req.body.image, username: req.body.username});
   User.register(newUser, req.body.password, function(err, user){
     if(err){
       req.flash("error", err.message);
