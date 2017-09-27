@@ -13,6 +13,10 @@ body {
   font-size: 100px;
   font-family: 'Baloo Bhaijaan', cursive;
 }
+.views{
+  font-family: 'Baloo Bhaijaan', cursive;
+  font-weight: 100;
+}
 .slideshow { 
   position: fixed;
   width: 100%;
@@ -42,19 +46,19 @@ body {
 }
 .slideshow li:nth-child(2) { 
   background-image: url(http://goldendragonned.com/images/beef-stir-fry.jpg);
-  animation-delay: 10s; 
+  animation-delay: 5s; 
 }
 .slideshow li:nth-child(3) { 
   background-image: url(https://www.eatingthaifood.com/wp-content/uploads/2014/01/thai-chicken-basil-recipe.jpg);
-  animation-delay: 20s; 
+  animation-delay: 10s; 
 }
 .slideshow li:nth-child(4) { 
   background-image: url(http://giordanos.com/content/uploads/reheating-deep-dish-pizza.png);
-  animation-delay: 30s; 
+  animation-delay: 15s; 
 }
 .slideshow li:nth-child(5) { 
   background-image: url(http://sanchosmexican.com/wp-content/uploads/2015/01/taco-slide1.jpg);
-  animation-delay: 40s; 
+  animation-delay: 20s; 
 }
 @keyframes imageAnimation { 
   0% { 
