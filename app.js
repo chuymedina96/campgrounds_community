@@ -62,9 +62,7 @@ app.get("*", function(req, res){
     res.render("404", {image:image});
 });
 //SERVER
-app.listen(3000, function(){
-    console.log("Your server has started!!!");
-});
+app.listen(process.env.PORT || 3000);
 //Playing around with Yahoo`s weather api
 /*app.get("/yahoo", function(req, res){
     request("https://query.yahooapis.com/v1/public/yql?q=select%20astronomy.sunset%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22maui%2C%20hi%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(error, responce, body){
