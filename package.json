@@ -1,16 +1,16 @@
 {
-  "name": "campout",
+  "name": "foody",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple food application.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Jesus Medina",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "bootstrap": "^3.3.7",
     "connect-flash": "^0.1.1",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
@@ -20,7 +20,6 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.2.0",
-    "react": "^15.6.1",
     "request": "^2.81.0"
   }
 }
