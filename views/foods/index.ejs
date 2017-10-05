@@ -13,6 +13,9 @@
     <div class="row animated fadeInUpBig" style="display: flex; flex-wrap: wrap">
         <% foods.forEach(function(food){ %>
             <div class="col-md-4 col-sm-6">
+               <div class="caption">
+                        <h4 class="header-title"><img id="profile-img" src="<%= %>"><%= food.author.username %></h4>
+                    </div>
                 <div class="thumbnail text-center">
                     <a href="/foods/<%= food._id %>"><img src="<%= food.image %>"></img>
                     <div class="caption">
