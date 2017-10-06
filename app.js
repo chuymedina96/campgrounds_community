@@ -23,7 +23,8 @@ var seedDB                = require("./seeds.js");
 seedDB(); //function seeds database and adds starter data.
 
 //Connecting MongoDB
-mongoose.connect(process.env.DATABASEURL), {useMongoClient: true};
+var url = process.env.DATABASEURL || "mongodb://localhost/foody_app"
+mongoose.connect(url), {useMongoClient: true};
 //Public Dir and bodyParser
 app.use(methodOverride("_method"));
 app.use(flash());
