@@ -23,8 +23,8 @@ var seedDB                = require("./seeds.js");
 seedDB(); //function seeds database and adds starter data.
 
 //Connecting MongoDB
-//mongoose.connect(process.env.DATABASEURL), {useMongoClient: true};;
-mongoose.connect("mongodb://chuy:Otispotus9613!@ds155424.mlab.com:55424/foody", {useMongoClient: true});
+mongoose.connect(process.env.DATABASEURL), {useMongoClient: true};
+//mongoose.connect("mongodb://chuy:Otispotus9613!@ds155424.mlab.com:55424/foody", {useMongoClient: true});
 //mongodb://chuy:Otispotus9613!@ds155424.mlab.com:55424/foody
 //Public Dir and bodyParser
 app.use(methodOverride("_method"));
