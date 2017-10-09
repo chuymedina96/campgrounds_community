@@ -42,7 +42,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function(req, res, next){
-
   res.locals.currentUser = req.user;
   res.locals.error       = req.flash("error");
   res.locals.success     = req.flash("success");
@@ -66,6 +65,7 @@ app.get("*", function(req, res){
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server has started!");
 });
+//google maps api key: AIzaSyDgigJTU3ssL2iSdjtoM7tZPurcgy61gN0
 //Playing around with Yahoo`s weather api
 /*app.get("/yahoo", function(req, res){
     request("https://query.yahooapis.com/v1/public/yql?q=select%20astronomy.sunset%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22maui%2C%20hi%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", function(error, responce, body){

@@ -53,3 +53,7 @@ ul li:hover{
 .session-fonts{
   font-family: 'Baloo Bhaijaan', cursive;
 }
+#map {
+    height: 400px;
+    width: 100%;
+}

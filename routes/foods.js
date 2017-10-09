@@ -2,7 +2,8 @@ var express     = require("express"),
     router      = express.Router(),
     Food        = require("../models/foods.js"),
     Comment     = require("../models/comment.js"),
-    middleware  = require("../middleware");
+    middleware  = require("../middleware"),
+    geocoder    = require("geocoder");
 
 router.get("/", function(req, res){
     Food.find({}, function(err, allFoods){
@@ -28,7 +29,11 @@ router.post("/", middleware.isLoggedin, function(req, res){
       id: req.user._id,
       username: req.user.username
     };
-    var newFood = {name: name, price: price, image: image, description: description, author: author};
+    geocoder.geocode(req.body.location, function (err, data) {
+    var lat = data.results[0].geometry.location.lat;
+    var lng = data.results[0].geometry.location.lng;
+    var location = data.results[0].formatted_address;
+    var newFood = {name: name, price: price, image: image, description: description, author: author, location: location, lat: lat, lng: lng};
     Food.create(newFood, function(err, newlyCreated){
       console.log(req.user);
         if(err){
@@ -38,6 +43,7 @@ router.post("/", middleware.isLoggedin, function(req, res){
             res.redirect("/foods");
         }
     });
+  });
 });
 //Show route for posts
 router.get("/:id", function(req, res){
@@ -55,15 +61,22 @@ router.get("/:id/edit", middleware.checkFoodOwnership,function(req, res){
     res.render("foods/edit", {food: foundFood});
   });
 });
-router.put("/:id", middleware.checkFoodOwnership,function(req, res){
-  Food.findByIdAndUpdate(req.params.id, req.body.food, function(err, updatedPost){
-    if(err){
-      console.log(err);
-      res.redirect("/foods");
-    }else{
-      res.redirect("/foods/" + req.params.id);
-    }
-  })
+router.put("/:id", function(req, res){
+  geocoder.geocode(req.body.location, function (err, data) {
+    var lat = data.results[0].geometry.location.lat;
+    var lng = data.results[0].geometry.location.lng;
+    var location = data.results[0].formatted_address;
+    var newData = {name: req.body.name, image: req.body.image, description: req.body.description, cost: req.body.cost, location: location, lat: lat, lng: lng};
+    Food.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, food){
+        if(err){
+            req.flash("error", err.message);
+            res.redirect("back");
+        } else {
+            req.flash("success","Successfully Updated!");
+            res.redirect("/foods/" + food._id);
+        }
+    });
+  });
 });
 router.delete("/:id", middleware.checkFoodOwnership,function(req, res){
   Food.findByIdAndRemove(req.params.id, function(err){

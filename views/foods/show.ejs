@@ -9,6 +9,7 @@
                 <li class="list-group-item">Info three</li>
                 <li class="list-group-item">Info three</li>
             </div>
+            <div id="map"></div>
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
@@ -91,4 +92,33 @@
     </div>
   </div>
 </div>
+<script>
+  function initMap() {
+    var lat = <%= food.lat %>;
+    var lng = <%= food.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false
+    });
+    var contentString = `
+      <strong><%= food.name %><br />
+      <%= food.location %></strong>
+      <p><%= food.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgigJTU3ssL2iSdjtoM7tZPurcgy61gN0&callback=initMap"></script>
+
 <% include ../partials/footer %>
