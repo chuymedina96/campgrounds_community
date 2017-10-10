@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="/css/main.css"/>
 
 </head>
@@ -27,14 +28,14 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse text-center" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/foods">Browse food</a></li>
+        <li><a href="/foods"><i class="fa fa-lg fa-cutlery"></i><span class="browse-padding">Browse food</a></li>
       </ul>
       <% if(!currentUser){ %>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/register"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+        <li><a href="/register"><span class="glyphicon glyphicon-user"></span><span class="register-padding">Sign Up</span></a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span><span class="login-padding">Login</span></a></li>
       </ul>
       <% } else { %>
         <ul class="nav navbar-nav navbar-right">

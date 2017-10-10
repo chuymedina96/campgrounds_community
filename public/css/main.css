@@ -115,7 +115,21 @@ ul li:hover{
 .navbar-inverse{
   border-radius: 0px;
 }
-
+.browse-padding{
+  padding-left: 5px;
+}
+.login-padding{
+  padding-left: 5px;
+}
+.register-padding{
+  padding-left: 5px;
+}
+.glyphicon-user{
+  font-size: 15px;
+}
+.glyphicon-log-in{
+  font-size: 15px;
+}
 
 /* media queries for panels on food index page*/
 @media only screen and (max-width: 444px) {
