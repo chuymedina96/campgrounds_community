@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Oswald|Roboto|Ubuntu');
 body{
-  background-color: #EEFFFF;
+  background-color: #fff;
   font-family: 'Ubuntu', sans-serif;
 }
 .header-title{
@@ -21,6 +21,8 @@ body{
 }
 .thumbnail {
   padding: 0;
+  background-color: #eee;
+  border-radius: 20px;
 }
 .thumbnail .caption-full {
   padding: 9px;
@@ -29,10 +31,10 @@ body{
   display: inline;
 }
 #profile-img{
-  border-radius: 5px;
-  height: 25px;
-  width: 25px;
-  display: inline;
+  border-radius: 20px;
+  height: 20px;
+  width: 20px;
+  display: inline-block;
 }
 .register-links li{
   font-size: 30px;
@@ -40,6 +42,14 @@ body{
 .logo img{
   width:50px;
   height:50px;
+}
+.logo-size{
+  font-size: 30px;
+  font-family: 'Baloo Bhaijaan', cursive;
+  color: #29ADAD;
+}
+.navbar-brand{
+  color: white;
 }
 .newfood{
   font-family: 'Ubuntu', sans-serif;
@@ -56,4 +66,63 @@ ul li:hover{
 #map {
     height: 400px;
     width: 100%;
+}
+/*Username in post top panel*/
+.username{
+  font-weight: 500;
+}
+.username-padding{
+  padding-left: 5px;
+  font-weight: 400;
+  color: #29ADAD;
+}
+.food-description{
+  color: #29ADAD;
+}
+.add-button{
+  border-radius: 30px;
+  background-color: #29ADAD;
+}
+.heart-color{
+  color: #FFA6CC;
+}
+.heart-color:hover{
+  color: red;
+}
+.glyphicon-heart{
+  font-size: 25px;
+}
+.glyphicon-heart:active{
+  color: red;
+}
+.popular{
+  font-size: 40px;
+  color: #fff;
+}
+.navbar-inverse .navbar-brand{
+  color: #fff;
+}
+.top{
+  background-color: black;
+  margin-bottom: 20px;
+  margin-top: -20px;
+  height: 80px;
+}
+/* Added some padding to username next tp profile image */
+.nav-user{
+  padding-left:5px;
+}
+.navbar-inverse{
+  border-radius: 0px;
+}
+
+
+/* media queries for panels on food index page*/
+@media only screen and (max-width: 444px) {
+     .popular{
+        font-size: 25px;
+    }
+    .top{
+      margin-bottom: 25px;
+    }
 }

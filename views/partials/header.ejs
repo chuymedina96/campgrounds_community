@@ -39,13 +39,13 @@
       <% } else { %>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img id="profile-img" class="img-responsive" src="<%= currentUser.image %>"/><%= currentUser.firstName %></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img id="profile-img" class="img-responsive" src="<%= currentUser.image %>"/><span class="nav-user"><%= currentUser.firstName %></span></a>
             <ul class="dropdown-menu text-right">
               <li><a href="/profiles/profile">Profile</a></li>
               <li><a href="#">Edit Profile</a></li>
             </ul>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
           </li>
-          <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
         </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -53,9 +53,9 @@
 </nav>
 <div class="container">
   <% if(error && error.length > 0){ %>
-  <div class="animated bounce text-center alert alert-danger" role="alert"><%= error %></div>
+  <div class="animated bounce text-center alert alert-danger" role="alert"><%= error %><button type="button" class="close" data-dismiss="alert">&times;</button></div>
   <% } %>
   <% if(success && success.length > 0){ %>
-  <div class="animated flipInX text-center alert alert-success" role="alert"><%= success %></div>
+  <div class="animated flipInX text-center alert alert-success" role="alert"><%= success %><button type="button" class="close" data-dismiss="alert">&times;</button></div>
   <% } %>
 </div>
