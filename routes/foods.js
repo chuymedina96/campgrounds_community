@@ -29,6 +29,7 @@ router.post("/", middleware.isLoggedin, function(req, res){
       id: req.user._id,
       username: req.user.username
     };
+    
     geocoder.geocode(req.body.location, function (err, data) {
     var lat = data.results[0].geometry.location.lat;
     var lng = data.results[0].geometry.location.lng;
