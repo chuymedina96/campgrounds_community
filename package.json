@@ -16,6 +16,8 @@
     "express": "^4.15.4",
     "express-session": "^1.15.5",
     "geocoder": "^0.2.3",
+    "http": "0.0.0",
+    "https": "^1.0.0",
     "method-override": "^2.3.9",
     "moment": "^2.18.1",
     "mongoose": "^4.11.7",

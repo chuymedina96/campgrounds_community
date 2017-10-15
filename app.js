@@ -6,7 +6,8 @@ var express               = require("express"),
     methodOverride        = require("method-override"),
     LocalStrategy         = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
-    flash                 = require("connect-flash");
+    flash                 = require("connect-flash"),
+    https                 = require("https");
 //Using express
 var app                   = express();
 //Models
@@ -25,6 +26,7 @@ seedDB(); //function seeds database and adds starter data.
 //Connecting MongoDB
 var url = process.env.DATABASEURL || "mongodb://localhost/foody_app"
 mongoose.connect(url), {useMongoClient: true};
+console.log(url);
 //Public Dir and bodyParser
 app.use(methodOverride("_method"));
 app.use(flash());
@@ -62,7 +64,10 @@ app.get("*", function(req, res){
     };
     res.render("404", {image:image});
 });
-//SERVER
+//SERVER and Heroku Dyno
+setInterval(function() {
+    https.get("https://food-me-please.herokuapp.com/");
+}, 300000); // pings the server every 5 minutes preventing dyno sleep (300000)
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server has started!");
 });
