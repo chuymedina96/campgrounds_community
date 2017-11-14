@@ -1,9 +1,9 @@
 //Modules
 var express               = require("express"),
-    bodyParser            = require('body-parser'),
+    methodOverride        = require("method-override"),
+    bodyParser            = require("body-parser"),
     mongoose              = require("mongoose"),
     passport              = require("passport"),
-    methodOverride        = require("method-override"),
     LocalStrategy         = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
     flash                 = require("connect-flash"),
@@ -29,8 +29,8 @@ mongoose.connect(url), {useMongoClient: true};
 console.log(url);
 //Public Dir and bodyParser  
 app.use(methodOverride("_method"));
-app.use(flash());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(flash());
 app.use(express.static(__dirname + "/public"));
 app.use(require("express-session")({
   secret: "Chuy is awesome",
