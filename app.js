@@ -21,7 +21,7 @@ var foodRoutes            = require("./routes/foods.js"),
     profileRoutes         = require("./routes/profile.js");
 //Seeding the database
 var seedDB                = require("./seeds.js");
-seedDB(); //function seeds database and adds starter data.
+//seedDB(); //function seeds database and adds starter data.
 
 //Connecting MongoDB
 var url = process.env.DATABASEURL || "mongodb://localhost/foody_app"
