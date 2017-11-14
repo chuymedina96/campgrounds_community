@@ -69,7 +69,7 @@ setInterval(function() {
     http.get("http://food-me-please.herokuapp.com/");
 }, 300000); // pings the server every 5 minutes preventing dyno sleep (300000)
 app.listen(process.env.PORT || 3000, function(){
-  console.log("Server has started!");
+  console.log("Server has started! Yeah!");
 });
 //Playing around with Yahoo`s weather api
 /*app.get("/yahoo", function(req, res){
