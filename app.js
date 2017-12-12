@@ -7,7 +7,7 @@ var express               = require("express"),
     LocalStrategy         = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
     flash                 = require("connect-flash"),
-    http                  = require("http"),  
+    http                  = require("http");
 //using express
 var app                   = express();
 //Models
@@ -17,7 +17,7 @@ var Food                  = require("./models/foods.js"),
 //Routes
 var foodRoutes            = require("./routes/foods.js"),
     commentsRoutes        = require("./routes/comments.js"),
-    indexRoutes           = require("./routes/index.js");
+    indexRoutes           = require("./routes/index.js"),
     profileRoutes         = require("./routes/profile.js");
 //Seeding the database
 var seedDB                = require("./seeds.js");
