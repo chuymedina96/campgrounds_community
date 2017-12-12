@@ -7,7 +7,7 @@ var express               = require("express"),
     LocalStrategy         = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
     flash                 = require("connect-flash"),
-    http                  = require("http"),
+    http                  = require("http"),  
 //using express
 var app                   = express();
 //Models
