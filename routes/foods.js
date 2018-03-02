@@ -1,9 +1,9 @@
-var express     = require("express"),
-    router      = express.Router(),
-    Food        = require("../models/foods.js"),
-    Comment     = require("../models/comment.js"),
-    middleware  = require("../middleware"),
-    geocoder    = require("geocoder");
+ var express     = require("express"),
+    router       = express.Router(),
+    Food         = require("../models/foods.js"),
+    Comment      = require("../models/comment.js"),
+    middleware   = require("../middleware"),
+    geocoder     = require("geocoder");
 
 router.get("/", function(req, res){
     Food.find({}, function(err, allFoods){
