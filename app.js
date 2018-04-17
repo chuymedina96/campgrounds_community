@@ -64,10 +64,6 @@ app.get("*", function(req, res){
     };
     res.render("404", {image:image});
 });
-//SERVER and Heroku Dyno
-setInterval(function() {
-    http.get("http://food-me-please.herokuapp.com/");
-}, 1700000); // pings the server every 28 minutes preventing dyno sleep (300000)
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server has started!!!!!");
 });
